@@ -1,0 +1,4 @@
+digraph G {graph [bgcolor="white",pad=0.25,nodesep=0.38,ranksep=0.46,fontname="DejaVu Sans"]; node [shape=box,style="rounded,filled",color="#23485c",fillcolor="#e9f0f4",fontname="DejaVu Sans",fontsize=11,margin="0.18,0.10"]; edge [color="#657b87",fontname="DejaVu Sans",fontsize=9]; rankdir=LR; R [label="Snapshot R"]; edit [label="Candidate change set
+expected revision R"]; V [label="Validate schema + invariants"]; CAS [label="Head still R?",shape=diamond]; R2 [label="Publish R+1
+atomic journal"]; Reject [label="Reject / conflict
+no partial publication",fillcolor="#fde8e3"]; Derived [label="Invalidate affected artifacts"]; R -> edit -> V -> CAS -> R2 -> Derived; V -> Reject [label="invalid"]; CAS -> Reject [label="stale"]; }

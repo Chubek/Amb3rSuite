@@ -1,0 +1,8 @@
+// Proposed HWIL H3 textual syntax. State initialization unspecified until reset.
+hwil.module @counter(%clk: clock, %rst: bits<1,2>, %en: bits<1,2>) -> (%q: bits<8,2>) {
+  %state = reg bits<8,2> clock %clk reset sync_high %rst value 0 enable %en
+  %next = add.wrap %state, const 1 : bits<8,2>
+  reg.next %state, %next
+  output %q, %state
+}
+// Reset overrides enable. A four-state source must be explicitly admitted to the two-state profile.

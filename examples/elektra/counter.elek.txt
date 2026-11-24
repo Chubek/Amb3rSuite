@@ -1,0 +1,18 @@
+// Proposed HWIL-facing Elektra syntax; not executable today.
+module Counter(in clk: clock, in reset: logic<1>, in en: logic<1>, out q: bits<8>) {
+  reg count: bits<8> init 0;
+  on rising(clk) {
+    if reset == 1 { next count = 0; }
+    else if en == 1 { next count = wrap(count + 1); }
+    else { next count = count; }
+  }
+  assign q = count;
+}
+testbench CounterTest for Counter {
+  clock clk period 10 ns;
+  drive reset = 1 at 0 ns;
+  drive en = 1 at 0 ns;
+  expect q == 0 after rising(clk, 1);
+  drive reset = 0 at 12 ns;
+  expect q == 1 after rising(clk, 2);
+}

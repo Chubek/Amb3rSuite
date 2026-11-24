@@ -1,0 +1,5 @@
+{
+  "type": "function_call_output",
+  "call_id": "REPLACE_WITH_MATCHING_CALL_ID",
+  "output": "{\"status\":\"ok\",\"revision\":\"fixture-r1\",\"evidence\":[{\"id\":\"erc-1\",\"message\":\"Required power input is unconnected\"}]}"
+}

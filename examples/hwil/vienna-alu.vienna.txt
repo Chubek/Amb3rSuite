@@ -1,0 +1,11 @@
+// Proposed Vienna ADL subset, NOT a current parser or standardized syntax.
+architecture Tiny8 {
+  register R[8]: bits<8>;
+  resource ALU { capacity 1; }
+  instruction ADD(rd: reg, rs: reg) {
+    encoding 0b0001 ++ rd:3 ++ rs:3;
+    semantics R[rd] = wrap(R[rd] + R[rs]);
+    issue ALU occupancy 1 cycle latency 1 cycle;
+  }
+}
+// Encoder, instruction selector and implementation semantics must be verified separately.

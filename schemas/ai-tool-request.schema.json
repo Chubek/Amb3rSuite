@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Amb3r ai-tool-request proposal v1",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema": {
+      "const": 1
+    },
+    "request_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128
+    },
+    "revision": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "tool": {
+      "enum": [
+        "design.get_revision",
+        "design.query_objects",
+        "catalogue.lookup",
+        "analysis.explain_diagnostic",
+        "wave.measure",
+        "simulation.preview",
+        "formal.explain_counterexample",
+        "design.propose"
+      ]
+    },
+    "arguments": {
+      "type": "object"
+    },
+    "deadline_ms": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 60000
+    }
+  },
+  "required": [
+    "schema",
+    "request_id",
+    "revision",
+    "tool",
+    "arguments",
+    "deadline_ms"
+  ]
+}

@@ -1,0 +1,12 @@
+# Existing-language candidate: pure policy portion of an On1x plugin.
+# SDK registration and snapshot marshalling require a separate admitted adapter.
+fn clearance_ok(actual_nm:i64, required_nm:i64) -> bool {
+    if actual_nm < 0 || required_nm < 0 { return false; }
+    return actual_nm >= required_nm;
+}
+fn main() {
+    assert(clearance_ok(300000,250000));
+    assert(!clearance_ok(200000,250000));
+    assert(!clearance_ok(-1,250000));
+    println(1);
+}

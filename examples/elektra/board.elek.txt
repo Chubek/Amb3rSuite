@@ -1,0 +1,10 @@
+// Proposed catalogue/board/constraint profile.
+board FilterBoard for Divider {
+  outline rect(0 mm, 0 mm, 30 mm, 20 mm);
+  stackup "two-layer-fr4";
+  place R1 at (8 mm, 10 mm) rotate 0 deg;
+  place R2 at (15 mm, 10 mm) rotate 90 deg;
+  constraint clearance minimum 0.25 mm;
+  constraint net out width minimum 0.3 mm;
+  route out using "astar-preview";
+}

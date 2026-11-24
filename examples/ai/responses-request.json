@@ -1,0 +1,6 @@
+{
+  "model": "REPLACE_WITH_AUTHORIZED_MODEL_ID",
+  "store": false,
+  "input": "Explain the selected design revision's electrical rule diagnostic using the available tool evidence.",
+  "tools": [{"type": "function", "name": "design_get_revision", "description": "Read metadata for the explicitly selected revision, never mutate it.", "strict": true, "parameters": {"type": "object", "properties": {"revision": {"type": "string"}}, "required": ["revision"], "additionalProperties": false}}]
+}

@@ -1,0 +1,7 @@
+digraph G {graph [bgcolor="white",pad=0.25,nodesep=0.38,ranksep=0.46,fontname="DejaVu Sans"]; node [shape=box,style="rounded,filled",color="#23485c",fillcolor="#e9f0f4",fontname="DejaVu Sans",fontsize=11,margin="0.18,0.10"]; edge [color="#657b87",fontname="DejaVu Sans",fontsize=9]; graph [rankdir=TB]; menu [label="AMB3R    CAD | EDA | Analog | Digital | Notebook    Command palette"]; left [label="Project tree
+Catalogue
+Layers",width=1.7,height=1.8]; middle [label="Schematic / PCB / source / HWIL
+
+Dockable central canvas",width=4.3,height=1.8]; right [label="Inspector
+Rule findings
+Copilot",width=1.7,height=1.8]; bottom [label="Waveforms | Diagnostics | Job progress | Console",width=8]; {rank=same; left; middle; right;} menu->middle [style=invis]; left->middle->right [style=invis]; middle->bottom [style=invis]; }

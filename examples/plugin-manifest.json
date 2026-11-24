@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "id": "example.count",
+  "version": "0.1.0",
+  "abi": 1,
+  "mode": "trusted-linked",
+  "artifact_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+  "required_capabilities": [
+    "design.read",
+    "diagnostics.emit",
+    "commands.register"
+  ],
+  "facets": [
+    "command"
+  ],
+  "dependencies": [],
+  "limits": {
+    "memory_bytes": 1048576,
+    "deadline_ms": 1000
+  }
+}

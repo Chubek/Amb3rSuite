@@ -1,0 +1,18 @@
+# Documented named-place borrow and ref_replace profile.
+# Candidate for pinned upstream on1xc; not compiled in this workbook.
+record Counter { value:i64 }
+fn read(counter: borrow Counter) -> i64 { return counter["value"]; }
+fn increment(counter: ref Counter) {
+    counter := record<Counter>{value:counter["value"]+1};
+}
+fn exchange(x: ref i64, next: i64) -> i64 { return ref_replace(x,next); }
+fn main() {
+    let owner = box(record<Counter>{value:4});
+    { let edit = borrow mut owner; increment(edit); }
+    assert(read(owner)==5);
+    drop(owner);
+    let n = 1;
+    assert(exchange(n,2)==1);
+    assert(n==2);
+    println(42);
+}

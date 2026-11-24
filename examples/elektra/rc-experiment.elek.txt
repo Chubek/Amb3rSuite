@@ -1,0 +1,17 @@
+// Proposed full Elektra, NOT accepted by the reference parser.
+package lab.divider;
+circuit Divider {
+  net vin, out, gnd;
+  ground gnd;
+  V1: Voltage(vin, gnd, 8 V);
+  R1: Resistor(vin, out, 1 kohm);
+  R2: Resistor(out, gnd, 3 kohm);
+  C1: Capacitor(out, gnd, 1 uF);
+}
+experiment Charge for Divider {
+  op;
+  tran step 75 us stop 6 ms initial zero;
+  probe V(out);
+  measure settled = V(out) at 6 ms;
+  assert settled > 5.9 V;
+}

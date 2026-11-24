@@ -1,0 +1,9 @@
+// Proposed differentiable analog model DSL; no production model guarantee.
+model IdealDiode(p: analog<voltage>, n: analog<voltage>) {
+  param Is: current = 1 pA;
+  param Vt: voltage = 25.85 mV;
+  require Is > 0 A && Vt > 0 V;
+  equation I(p,n) = Is * (exp(V(p,n) / Vt) - 1);
+  derivative auto;
+}
+// Solver must implement model-specific limiting and temperature/charge policy.

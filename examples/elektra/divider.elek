@@ -1,0 +1,8 @@
+// Executable subset of Elektra: ideal DC resistor divider.
+circuit Divider {
+  net vin, out, gnd;
+  ground gnd;
+  V1: Voltage(vin, gnd, 8 V);
+  R1: Resistor(vin, out, 1 kohm);
+  R2: Resistor(out, gnd, 3 kohm);
+}

@@ -1,0 +1,19 @@
+// Proposed native component catalogue and parametric elaboration.
+package components.passives;
+component R0603 {
+  param resistance: resistance = 1 kohm;
+  pin p: passive analog<voltage>;
+  pin n: passive analog<voltage>;
+  symbol "iec-resistor";
+  footprint "resistor-0603";
+  model Resistor(p, n, resistance);
+  rating power <= 100 mW;
+}
+circuit Ladder(param count: int = 4, param r: resistance = 1 kohm) {
+  net n[count + 1], gnd;
+  ground gnd;
+  generate for i in 0..count {
+    R[i]: R0603(n[i], n[i+1], resistance = r);
+  }
+}
+// Catalogue provenance and actual part ratings must be independently verified.

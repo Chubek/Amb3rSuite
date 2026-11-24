@@ -1,0 +1,19 @@
+# Proposed future APIs and syntax; NOT a runnable On1x program.
+# Requires independently reviewed resource contracts, general owning containers,
+# aggregate/slice FFI and verified cleanup. Use move/borrow per final grammar.
+import amb3r.circuit as Circuit;
+import amb3r.spice as Spice;
+import amb3r.wave as Wave;
+fn simulate(design: borrow Circuit.Design) -> Result<own<Wave.Series>, Spice.Error> {
+    let circuit = Circuit.elaborate(design)?;
+    let solver = Spice.create(borrow circuit)?;
+    let waveform = Wave.create()?;
+    # Each owner has deterministic drop; do not double-release with close + drop.
+    var step = 0;
+    while step < 80 {
+        let sample = Spice.step(solver, 0.000075)?;
+        Wave.append(waveform, sample)?;
+        step = step + 1;
+    }
+    return Ok(move(waveform));
+}

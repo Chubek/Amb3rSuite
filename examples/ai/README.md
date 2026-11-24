@@ -1,0 +1,2 @@
+# Protocol fixtures
+These are inert request/output examples, not a network client. Set authorized model ID in the host, fetch API credentials from OS keyring, validate every call ID and tool request, enforce revision and capability grants, and use the actual provider's documented continuation API. OpenCode requires its own versioned HTTP/client adapter; do not send these Responses payloads to an OpenCode session endpoint. No secrets or default external connection. See chapter 12.

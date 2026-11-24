@@ -1,0 +1,15 @@
+facet,input,output,minimum_grant,execution_profile
+command,revision+typed args,diagnostic/artifact/candidate,design.read,trusted or isolated
+rule,snapshot,diagnostics,"design.read,diagnostics.emit",trusted or isolated
+importer,bounded bytes+dialect,candidate design,design.propose,isolated preferred
+exporter,snapshot+format,artifact,"design.read,artifact.emit",isolated preferred
+device model,local values+history,stamps+state proposal,model.evaluate,trusted or batched isolated
+linear solver,bounded matrix+RHS,solution+residual,model.evaluate,trusted or batched isolated
+waveform transform,chunks+units,derived chunks,"design.read,artifact.emit",isolated
+synthesis pass,verified HWIL,candidate HWIL,"design.read,design.propose",isolated
+formal engine,property+IR,proof status/witness,jobs.run,isolated
+renderer,draw commands,presented frame,artifact.emit,trusted native
+instrument,authorized typed command,measurement,separate live-device grant,broker only
+notebook evaluator,cell+snapshot,staged result,jobs.run,isolated
+AI provider,sanitized context,advice/proposal,separate network grant,broker only
+catalogue provider,lock/query,inert records,catalogue.read,isolated

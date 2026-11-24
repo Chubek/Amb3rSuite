@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Amb3r project proposal v1",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema": {
+      "const": 1
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128
+    },
+    "head": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "catalogue_lock": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "documents": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$"
+          },
+          "kind": {
+            "enum": [
+              "schematic",
+              "board",
+              "elektra",
+              "hwil",
+              "notebook"
+            ]
+          },
+          "digest": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          }
+        },
+        "required": [
+          "id",
+          "kind",
+          "digest"
+        ]
+      },
+      "maxItems": 1024
+    }
+  },
+  "required": [
+    "schema",
+    "id",
+    "name",
+    "head",
+    "catalogue_lock",
+    "documents"
+  ]
+}

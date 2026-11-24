@@ -1,0 +1,5 @@
+digraph G {graph [bgcolor="white",pad=0.25,nodesep=0.38,ranksep=0.46,fontname="DejaVu Sans"]; node [shape=box,style="rounded,filled",color="#23485c",fillcolor="#e9f0f4",fontname="DejaVu Sans",fontsize=11,margin="0.18,0.10"]; edge [color="#657b87",fontname="DejaVu Sans",fontsize=9]; rankdir=TB; manifest [label="Inert manifest + locked digest"]; broker [label="Host capability / registry / transaction broker",fillcolor="#e4f3e9"]; native [label="Trusted C / On1x native
+process authority"]; worker [label="Isolated native worker
+trusted bootstrap + limits"]; lua [label="Mune scripts
+restricted state / worker"]; data [label="Immutable versioned snapshots"]; Candidate [label="Candidate diagnostics / edits / artifacts"]; verifier [label="Authoritative validator
+review + commit"]; manifest->broker; broker->{native worker lua}; data->{native worker lua}; {native worker lua}->Candidate->verifier; }
